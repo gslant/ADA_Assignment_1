@@ -6,7 +6,7 @@ import java.util.Queue;
 public class ThreadPool {
 
     private List<Thread> threadPool;
-    private Queue<Task> taskQueue;
+    private Queue<Runnable> taskQueue;
 
     public ThreadPool(int initialSize) {
         threadPool = new ArrayList<>();
@@ -24,6 +24,10 @@ public class ThreadPool {
     }
 
     public int getAvailable() {
+        for(Thread thread : threadPool)
+        {
+
+        }
         return 0;
     }
 
@@ -37,8 +41,8 @@ public class ThreadPool {
 
     public boolean perform(Runnable task)
     {
-
-        return false;
+        taskQueue.add(task);
+        return true;
     }
 
 }
