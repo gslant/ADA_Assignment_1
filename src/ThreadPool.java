@@ -12,14 +12,17 @@ public class ThreadPool {
         threadPool = new ArrayList<>();
         taskQueue = new LinkedList<>();
 
+        System.out.println("creating threads");
         for(int i = 0; i < initialSize; i++)
         {
-            Thread n = new Thread();
+            threadProc p = new threadProc();
+            Thread n = new Thread(p);
             threadPool.add(n);
+            n.start();
         }
     }
 
-    public int getSize(){
+    public int getSize() {
         return threadPool.size();
     }
 
@@ -41,8 +44,33 @@ public class ThreadPool {
 
     public boolean perform(Runnable task)
     {
+        System.out.println("task " + task + " enqueued");
         taskQueue.add(task);
         return true;
+    }
+
+
+    private class threadProc implements Runnable
+    {
+        @Override
+        public void run() {
+            while(true)
+            {
+                try {
+                    if(taskQueue.size() != 0)
+                    {
+                        System.out.println();
+                    }
+                    Runnable task = taskQueue.poll();
+                    task.run();
+                    System.out.println("task complete");
+                }
+                catch (NullPointerException ex) {
+                    //System.out.println("nullpointer: " + ex.getMessage());
+                }
+
+            }
+        }
     }
 
 }

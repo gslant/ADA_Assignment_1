@@ -23,6 +23,8 @@ public class TestingTask<String,F> extends Task
             }
             iter.next();
         }
+
+        notifyAll("no of t's = " + numberOfTs);
     }
 
 }
