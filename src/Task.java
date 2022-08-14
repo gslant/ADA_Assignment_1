@@ -12,6 +12,7 @@ public abstract class Task<E,F> implements Runnable {
         this.id = UniqueIdentifier.getInstance().getIdentifier();
         observers = new ArrayList();
     }
+
     public int getId(){
         return this.id;
     }
