@@ -1,5 +1,5 @@
-import java.text.CharacterIterator;
-import java.text.StringCharacterIterator;
+//Byron Goldsack
+//20111390
 
 public class CipherTask<E, F> extends Task
 {

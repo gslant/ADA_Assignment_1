@@ -1,3 +1,6 @@
+//Byron Goldsack
+//20111390
+
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -95,6 +98,7 @@ public class Server {
                     String message = br.readLine();
                     if(message.equals("QUIT")) {
                         pw.println("confirm_quit");
+                        pool.destroyPool();
                         //stopRequested = true;
                         break;
                     }

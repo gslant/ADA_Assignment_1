@@ -1,3 +1,6 @@
+//Byron Goldsack
+//20111390
+
 public class UniqueIdentifier {
     private static UniqueIdentifier instance;
     private int counter;

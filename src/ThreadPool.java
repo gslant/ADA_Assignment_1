@@ -1,3 +1,6 @@
+//Byron Goldsack
+//20111390
+
 import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
@@ -31,7 +34,7 @@ public class ThreadPool {
         int numAvailable = 0;
         for(workerThread t : threadPool)
         {
-            if(t.available == true) {
+            if(t.available) {
                 numAvailable++;
             }
         }
@@ -52,11 +55,10 @@ public class ThreadPool {
         }
         else if(newSize < getSize()) //if decreasing in size
         {
-            int toRemove = getSize() - newSize;
             while(getSize() != newSize)
             {
                 workerThread toKill = threadPool.get(0);
-                if(toKill.available == true)
+                if(toKill.available)
                 {
                     toKill.setStopRequested();
                 }
@@ -101,14 +103,14 @@ public class ThreadPool {
             {
                 synchronized (taskQueue) {
                     try {
-                        System.out.println("thread " + threadPool.indexOf(this) + " waiting for notification");
+                        //System.out.println("thread " + threadPool.indexOf(this) + " waiting for notification");
                         taskQueue.wait();
                     }
                     catch (NullPointerException ex) {
                     } catch (InterruptedException e) {
                         e.printStackTrace();
                     }
-                    System.out.println("thread " + threadPool.indexOf(this) + " notified now");
+                    //System.out.println("thread " + threadPool.indexOf(this) + " notified now");
                     try {
                         Task task = taskQueue.poll();
                         available = false;
